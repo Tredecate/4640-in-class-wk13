@@ -1,19 +1,26 @@
 # Terraform S3 Backend Lab
-- Thomas de Zwart (A01199981)
+Thomas de Zwart (A01199981)
 
 ## Questions
 ### When is the state file created?
-a
+After the initial execution of `terraform apply plan.tfplan` completes.
 
 ### When is the lock file present?
-a
+When commands that modify or rely on an up-to-date state file are executed, including:
+- `terraform apply` (to no one's surprise)
+- `terraform destroy` (especially when chilling before confirming the destroy)
+- `terraform plan` (surprisingly!)
 
 ### Is the lock file always in the bucket after it is created?
-a
+Nope, it only exists while the command that created it is running.
 
 ## Screenshots
-### Lock File
-![](.screenshots/lock-file.png)
-
 ### State File
-![](.screenshots/state-file.png)
+![State file](.screenshots/state-file.png)
+
+### Lock File + State File
+![Lock file and state file](.screenshots/lock-file.png)
+
+### Bonus: Just Lock File!
+![Just the lock file](.screenshots/just-lock-file.png)
+(I saw this during the initial `terraform apply plan.tfplan`, *prior* to its completion)
