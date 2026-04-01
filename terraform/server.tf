@@ -13,8 +13,8 @@ data "aws_ami" "debian" {
 # create the ec2 instance
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
 resource "aws_instance" "web" {
-  ami                    = data.aws_ami.debian.id
-  instance_type          = "t2.micro"
+  ami           = data.aws_ami.debian.id
+  instance_type = "t3.micro"
 
   tags = {
     Name = "Web"
